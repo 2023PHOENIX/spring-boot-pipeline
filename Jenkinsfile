@@ -10,6 +10,9 @@ pipeline{
     stages{
         stage('Checkout Code'){
             steps{
+
+            echo "checking out the code "
+
             git branch: 'master', url : "https://github.com/2023PHOENIX/spring-boot-pipeline"
             }
         }
@@ -21,16 +24,19 @@ pipeline{
 
         stage('Build the docker image'){
             steps{
-
+                echo "Building project ${IMAGE_NAME}"
                sh "docker build -t ${IMAGE_NAME}:latest ."
             }
         }
 
         stage('Push the docker image'){
         steps{
+            echo "docker push ${IMAGE_NAME}:latest"
             withDockerRegistry([credentialsId : REGISTRY_CREDENTIALS, url : "https://index.docker.io/v1/"]){
             sh "docker push ${IMAGE_NAME}:latest"
             }
+
+            echo "docker image is pushed"
         }
         }
 
