@@ -1,33 +1,17 @@
-# this is builder
-
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
-
-
-# Set working directory inside the container
-WORKDIR /app
-
-# Copy the project files into the container
-COPY . .
-
-# Build the project using Maven
-RUN mvn clean package -DskipTests
-
-# Use a lightweight JDK runtime for the final image
+# Use a lightweight OpenJDK image as the base
 FROM openjdk:17-jdk-slim
 
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Copy only the built JAR from the previous stage
-COPY --from=builder /app/target/*.jar app.jar
+# Copy the compiled JAR from Jenkins workspace to the container
+COPY target/*.jar app.jar
 
-# Expose the Spring Boot default port
+# Expose the application port (Spring Boot default)
 EXPOSE 8081
 
-# Run the application
+# Run the Spring Boot application
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
-
 
 
 
