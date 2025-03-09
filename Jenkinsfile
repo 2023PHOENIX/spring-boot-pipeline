@@ -4,7 +4,7 @@ pipeline{
 // not sure about the env right now
     environment{
         REGISTRY_CREDENTIALS = 'docker-hub-credentials'
-        IMAGE_NAME = "https://github.com/2023PHOENIX/spring-boot-pipeline"
+        IMAGE_NAME = "spring-boot-pipeline-x01"
     }
 
     stages{
@@ -13,7 +13,7 @@ pipeline{
 
             echo "checking out the code "
 
-            git branch: 'master', url : "https://github.com/2023PHOENIX/spring-boot-pipeline"
+            git branch: 'master', url : "https://github.com/2023phoenix/spring-boot-pipeline"
             }
         }
         stage('Build & Test'){
