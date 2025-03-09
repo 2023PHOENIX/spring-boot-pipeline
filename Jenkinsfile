@@ -3,6 +3,8 @@ pipeline{
     agent any
 // not sure about the env right now
     environment{
+
+        IMAGE_NAME = "2023PHOENIX/spring-boot-pipeline"
     }
 
     stages{
