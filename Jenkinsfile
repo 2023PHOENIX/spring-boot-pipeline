@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.6-openjdk-11'
-        }
-    }
-
+    agent any
     environment {
         REGISTRY_CREDENTIALS = 'docker-hub-credentials'
         IMAGE_NAME = "spring-boot-pipeline-x01"
