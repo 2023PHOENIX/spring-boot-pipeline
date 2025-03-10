@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         REGISTRY_CREDENTIALS = 'docker-hub-credentials'
-        IMAGE_NAME = "spring-boot-pipeline-x01"
+        IMAGE_NAME = "2023phoenix/spring-boot-pipeline-x01"
         DOCKER_HUB_URL = "https://index.docker.io/v1/"
     }
 
